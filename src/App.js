@@ -23,10 +23,9 @@ function App() {
         alignItems: "center",
       }}
     >
-      <Header />
-
+      <Header robots={robots} setRobots={setRobots} />
       <Scroll>
-        <RobotList robots={robots} />
+        <RobotList robots={robots} setRobots={setRobots} />
       </Scroll>
     </div>
   );

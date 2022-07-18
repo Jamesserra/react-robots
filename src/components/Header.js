@@ -1,30 +1,62 @@
-import React from "react";
-// import { Card } from "@material-ui/core";
-// import { Box } from "@material-ui/core";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
-// import Button from "@mui/material/Button";
-import { Typography } from "@material-ui/core";
+import React, { useState } from "react";
 
-const Header = () => {
+import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
+
+const Header = ({ robots, setRobots }) => {
+  function handleSort(robots) {
+    let copy = [...robots].sort((a, b) => a.name.localeCompare(b.name));
+    setRobots(copy);
+  }
+
+  function handleReverse(robots) {
+    let copy = [...robots]
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .reverse();
+    setRobots(copy);
+  }
+
   return (
     <div className="headerContainer">
       <h1 style={{ textAlign: "center" }}>Robot Users</h1>
       <div className="inputData">
         <div className="inputSort">
-          <button>Sort Alphabetically</button>
-          <button>Sort Reverse Alphabetically</button>
+          <Button
+            style={{ padding: "10px", marginBottom: "10px" }}
+            variant="contained"
+            color="primary"
+            onClick={() => handleSort(robots)}
+          >
+            Sort A-Z
+          </Button>
+          <Button
+            style={{ padding: "10px", width: "100%" }}
+            variant="contained"
+            color="primary"
+            onClick={() => handleReverse(robots)}
+          >
+            Sort Z-A
+          </Button>
         </div>
         <div>
-          <input />
+          <TextField id="filled-basic" label="Filled" variant="filled" />
         </div>
-        <div className="inputForm">
-          <input />
-          <input />
-          <input />
-          <input />
-        </div>
+        <form className="inputForm">
+          <TextField required id="filled-basic" label="Name" variant="filled" />
+          <TextField
+            required
+            id="filled-basic"
+            label="Email"
+            variant="filled"
+          />
+          <TextField
+            required
+            id="filled-basic"
+            label="Phone Number"
+            variant="filled"
+          />
+          <Button variant="contained">Send</Button>
+        </form>
       </div>
     </div>
   );
