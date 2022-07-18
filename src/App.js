@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import RobotList from "./components/RobotList";
+import Scroll from "./components/Scroll";
 import "./App.css";
 
 function App() {
@@ -20,16 +21,13 @@ function App() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
       }}
     >
-      <div className="headerContainer">
-        <Header />
-      </div>
+      <Header />
 
-      <div className="headerContainer">
+      <Scroll>
         <RobotList robots={robots} />
-      </div>
+      </Scroll>
     </div>
   );
 }

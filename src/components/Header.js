@@ -9,7 +9,7 @@ import { Typography } from "@material-ui/core";
 
 const Header = () => {
   return (
-    <div>
+    <div className="headerContainer">
       <h1 style={{ textAlign: "center" }}>Robot Users</h1>
       <div className="inputData">
         <div className="inputSort">

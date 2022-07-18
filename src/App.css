@@ -8,13 +8,7 @@ body {
     width: 60%;
     border-radius: 15px;
     background: grey;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 16px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .inputData {
@@ -33,10 +27,9 @@ body {
     flex-direction: column;
 }
 
-.robotList {
+.robotCard {
     display: flex;
-    flex-direction: row;
-    margin: 10px;
-    padding: 10px;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
