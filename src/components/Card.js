@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-const Card = ({ name, email, id, robots, setRobots }) => {
+const Card = ({ name, email, phone, id, robots, setRobots }) => {
   function deleteRobot(robotID) {
-    let copy = robots.filter((robot) => robot.id != robotID);
+    let copy = robots.filter((robot) => robot.id !== robotID);
     setRobots(copy);
   }
 
@@ -23,6 +23,7 @@ const Card = ({ name, email, id, robots, setRobots }) => {
       <div>
         <h2>{name}</h2>
         <p>{email}</p>
+        <p>{phone.split(" ")[0]}</p>
       </div>
     </div>
   );

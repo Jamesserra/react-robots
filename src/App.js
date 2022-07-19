@@ -6,6 +6,8 @@ import "./App.css";
 
 function App() {
   const [robots, setRobots] = useState([]);
+  const [filterRobots, setFilteredRobots] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -23,10 +25,22 @@ function App() {
         alignItems: "center",
       }}
     >
-      <Header robots={robots} setRobots={setRobots} />
-      <Scroll>
-        <RobotList robots={robots} setRobots={setRobots} />
-      </Scroll>
+      <Header
+        robots={robots}
+        setRobots={setRobots}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        setFilteredRobots={setFilteredRobots}
+      />
+      {searchInput.length > 1 ? (
+        <Scroll>
+          <RobotList robots={filterRobots} setRobots={setRobots} />
+        </Scroll>
+      ) : (
+        <Scroll>
+          <RobotList robots={robots} setRobots={setRobots} />
+        </Scroll>
+      )}
     </div>
   );
 }

@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 
-const Header = ({ robots, setRobots }) => {
+const Header = ({
+  robots,
+  setRobots,
+  searchInput,
+  setSearchInput,
+  setFilteredRobots,
+}) => {
+  let [newUser, setNewUser] = useState([
+    { name: "", email: "", phone: "", id: "" },
+  ]);
+
   function handleSort(robots) {
     let copy = [...robots].sort((a, b) => a.name.localeCompare(b.name));
     setRobots(copy);
@@ -14,6 +23,32 @@ const Header = ({ robots, setRobots }) => {
       .sort((a, b) => a.name.localeCompare(b.name))
       .reverse();
     setRobots(copy);
+  }
+
+  function handleInput(e) {
+    e.preventDefault();
+
+    setNewUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    newUser.id = parseInt(Math.random().toFixed(3).slice(2));
+    setRobots([...robots, newUser]);
+    e.target.reset();
+  }
+
+  function handleSearch(searchValue) {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      let copy = robots.filter((robot) => {
+        return robot.name.toLowerCase().includes(searchInput.toLowerCase());
+      });
+      setFilteredRobots(copy);
+    }
   }
 
   return (
@@ -38,24 +73,43 @@ const Header = ({ robots, setRobots }) => {
             Sort Z-A
           </Button>
         </div>
-        <div>
-          <TextField id="filled-basic" label="Filled" variant="filled" />
+        <div style={{ padding: "10px" }}>
+          <TextField
+            id="filled-basic"
+            label="Search"
+            variant="filled"
+            value={searchInput}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
         </div>
-        <form className="inputForm">
-          <TextField required id="filled-basic" label="Name" variant="filled" />
+        <form className="inputForm" onSubmit={handleSubmit}>
           <TextField
             required
+            name="name"
+            id="filled-basic"
+            label="Name"
+            variant="filled"
+            onChange={(e) => handleInput(e)}
+          />
+          <TextField
+            required
+            name="email"
             id="filled-basic"
             label="Email"
             variant="filled"
+            onChange={(e) => handleInput(e)}
           />
           <TextField
             required
+            name="phone"
             id="filled-basic"
             label="Phone Number"
             variant="filled"
+            onChange={(e) => handleInput(e)}
           />
-          <Button variant="contained">Send</Button>
+          <Button type="submit" variant="contained">
+            Add User
+          </Button>
         </form>
       </div>
     </div>

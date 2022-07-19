@@ -18,6 +18,7 @@ const RobotList = ({ robots, setRobots }) => {
             id={robots[i].id}
             name={robots[i].name}
             email={robots[i].email}
+            phone={robots[i].phone}
             robots={robots}
             setRobots={setRobots}
           />
