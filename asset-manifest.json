@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-robots/static/css/main.dd54d040.css",
-    "main.js": "/react-robots/static/js/main.6a623707.js",
+    "main.js": "/react-robots/static/js/main.ffecc9bd.js",
     "index.html": "/react-robots/index.html",
     "main.dd54d040.css.map": "/react-robots/static/css/main.dd54d040.css.map",
-    "main.6a623707.js.map": "/react-robots/static/js/main.6a623707.js.map"
+    "main.ffecc9bd.js.map": "/react-robots/static/js/main.ffecc9bd.js.map"
   },
   "entrypoints": [
     "static/css/main.dd54d040.css",
-    "static/js/main.6a623707.js"
+    "static/js/main.ffecc9bd.js"
   ]
 }
