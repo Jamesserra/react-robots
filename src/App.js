@@ -34,7 +34,7 @@ function App() {
       />
       {searchInput.length > 1 ? (
         <Scroll>
-          <RobotList robots={filterRobots} setRobots={setRobots} />
+          <RobotList robots={filterRobots} setRobots={setFilteredRobots} />
         </Scroll>
       ) : (
         <Scroll>

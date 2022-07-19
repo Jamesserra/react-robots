@@ -48,6 +48,8 @@ const Header = ({
         return robot.name.toLowerCase().includes(searchInput.toLowerCase());
       });
       setFilteredRobots(copy);
+    } else {
+      setRobots(robots);
     }
   }
 
